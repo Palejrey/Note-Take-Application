@@ -180,7 +180,5 @@ if (window.location.pathname === '/notes') {
   noteTitle.addEventListener('keyup', handleRenderSaveBtn); // refernce line 118
   noteText.addEventListener('keyup', handleRenderSaveBtn); // refernce line 118
 }
+getAndRenderNotes();
 
-
-//getAndRenderNotes();
-getStarted.addEventListener('click', getAndRenderNotes);
