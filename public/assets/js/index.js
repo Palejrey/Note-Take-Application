@@ -3,9 +3,8 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
-const getStarted = document.querySelector('.get-started');
 
-if (window.location.pathname === '/notes') {
+if (window.location.pathname === 'http://localhost:3001/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
