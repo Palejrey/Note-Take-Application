@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 app.get('/', (req, res) => 
 res.sendFile(path.join(__dirname, '/public/index.html')));
@@ -39,7 +40,7 @@ app.post('/api/notes', (req, res) => {
       } else {
         const parsedNotes = JSON.parse(data);
         parsedNotes.push(newNotes);
-
+        
         fs.writeFile(
           './db/db.json',
           JSON.stringify(parsedNotes, null, 4),
@@ -55,10 +56,13 @@ app.post('/api/notes', (req, res) => {
       status: 'success',
       body: newNotes,
     };
-
+    
+    notes.push(newNotes);
+    res.status(201).json(notes);
     console.log(note);
-    res.status(201).json(note);
-  } else {
+
+   }
+   else {
     res.status(500).json('Error in creating note');
   }
 });
